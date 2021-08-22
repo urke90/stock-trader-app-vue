@@ -57,7 +57,8 @@
         background-color: #E0E2DB;
         display: flex;
         justify-content: space-between;
-        /* padding: 10px 10px; */
+        border-radius: 5px;
+        margin-bottom: 20px;
     }
     .nav__list {
         display: flex;
