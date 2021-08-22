@@ -1,19 +1,55 @@
 <template>
     <div class="stock__wrapper">
         <div class="stock__heading">
-            <h3>Name (price: Price)</h3>
+            <h3>{{ stock.name }} <small>(price: {{ stock.price }})</small></h3>
         </div>
         <div class="stock__body">
             <input
                 type="number"
-                name=""
-                id=""
                 placeholder="Quantity"
+                v-model.number="quantity"
             >
-            <button>Buy</button>
+            <button
+                @click="buyStockHandler"
+                :disabled="btnDisabled"
+            >Buy</button>
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                quantity: 0
+            };
+        },
+        props: {
+            stock: {
+                type: Object,
+                required: true
+            }
+        },
+        methods: {
+            buyStockHandler() {
+                console.log('bal', typeof(this.quantity));
+                const order = {
+                    id: this.stock.id,
+                    price: this.stock.price,
+                    quantity: this.quantity
+                };
+                console.log('order', order);
+                this.quantity = 0;
+            }
+        },
+        computed: {
+            btnDisabled() {
+                return this.quantity <= 0 || !Number.isInteger(this.quantity);
+            }
+        }
+    }
+</script>
+
 <style scoped>
  /*
     ALL GRAY COLORS
@@ -52,5 +88,8 @@
         color: #FFFFFF;
         border-radius: 5px;
         padding: 8px 16px;
+    }
+    button:disabled {
+        background-color: #95d5b2;
     }
 </style>
