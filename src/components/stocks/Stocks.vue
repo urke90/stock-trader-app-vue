@@ -1,6 +1,10 @@
 <template>
     <div class="stocks__grid">
-        <app-stock v-for="stock in stocks" :key="stock.id"></app-stock>
+        <app-stock
+            v-for="stock in stocks"
+            :key="stock.id"
+            :stock="stock"
+        ></app-stock>
     </div>
 </template>
 
@@ -17,7 +21,7 @@
                     },
                     {
                         id: 2,
-                        name: 'Googel',
+                        name: 'Google',
                         price: 200
                     },
                     {
