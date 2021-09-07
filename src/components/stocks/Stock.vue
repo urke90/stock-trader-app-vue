@@ -32,13 +32,11 @@
         },
         methods: {
             buyStockHandler() {
-                console.log('bal', typeof(this.quantity));
                 const order = {
                     id: this.stock.id,
                     price: this.stock.price,
                     quantity: this.quantity
                 };
-                console.log('order', order);
                 this.quantity = 0;
             }
         },
