@@ -18,7 +18,8 @@ const actions = {
         commit('SET_STOCKS', stocks);
     },
     buyStock({ commit }, order) {
-
+        console.log('kurac', order);
+        commit('BUY_STOCK', order);
     },
     randomizeStocks({ commit }) {
         commit('RND_STOCKS')
