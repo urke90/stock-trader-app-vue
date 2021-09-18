@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "vue": "^2.0.1",
-    "vue-router": "^3.5.2"
+    "vue-router": "^3.5.2",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -20,7 +21,6 @@
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
     "vue-loader": "^9.7.0",
-    "vuex": "^3.6.2",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-server": "2.1.0-beta.0"
   }
