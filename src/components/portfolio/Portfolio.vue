@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import Stock from './Stock.vue';
+    import Stock from './PortfolioStock.vue';
 
     export default {
         components: {

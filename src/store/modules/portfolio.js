@@ -25,12 +25,20 @@ const mutations = {
         const existingStock = state.portfolioStocks
             .find(portStock => portStock.id === id);
 
+        console.log('existingStock', existingStock)
+        console.log('existingStockQuantity', existingStock.quantity)
+        console.log('id', id)
+        console.log('price', price)
+        console.log('quantity', quantity)
+
         if (!existingStock) return;
 
         if (existingStock.quantity > quantity) {
+            console.log('mutations SELL_STOCK IF')
             existingStock.quantity -= quantity;
         } else {
             state.portfolioStocks.splice(state.portfolioStocks.indexOf(existingStock), 1);
+            console.log('mutations SELL_STOCK ELSE')
         }
 
         state.funds += quantity * price;
