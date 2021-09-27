@@ -33,13 +33,20 @@
                     </li>
                 </ul>
             </li>
+            <li class="list__item">
+                <strong>Funds: {{ funds }}</strong>
+            </li>
         </ul>
     </nav>
 </template>
 
 <script>
     export default {
-
+        computed: {
+            funds() {
+                return this.$store.getters.funds;
+            }
+        }
     }
 </script>
 
