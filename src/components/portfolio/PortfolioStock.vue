@@ -12,7 +12,7 @@
                 v-model.number="quantity"
             >
             <button
-
+                @click="sellStock"
                 :disabled="btnDisabled"
             >Sell</button>
         </div>
@@ -33,7 +33,16 @@
             }
         },
         methods: {
-
+            sellStock() {
+                const order = {
+                    id: this.stock.id,
+                    price: this.stock.price,
+                    quantity: this.quantity
+                }
+                // console.log('stock', this.stock)
+                this.$store.dispatch('sellStock', order);
+                this.quantity = 0;
+            }
         },
         computed: {
             btnDisabled() {
