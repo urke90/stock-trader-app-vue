@@ -8,11 +8,12 @@
                 type="number"
                 placeholder="Quantity"
                 v-model.number="quantity"
+                :class="{'stock__input--danger': insufficientFunds}"
             >
             <button
                 @click="buyStockHandler"
                 :disabled="btnDisabled"
-            >Buy</button>
+            >{{ insufficientFunds ? 'No funds left' : 'Buy' }}</button>
         </div>
     </div>
 </template>
@@ -46,7 +47,13 @@
         },
         computed: {
             btnDisabled() {
-                return this.quantity <= 0 || !Number.isInteger(this.quantity);
+                return this.insufficientFunds || this.quantity <= 0 || !Number.isInteger(this.quantity);
+            },
+            funds() {
+                return this.$store.getters.funds;
+            },
+            insufficientFunds() {
+                return this.quantity * this.stock.price > this.funds;
             }
         }
     }
@@ -78,6 +85,9 @@
     }
     h3 {
         margin: 0;
+    }
+    .stock__input--danger {
+        border: 1px solid #FF0000;
     }
     input {
         padding: 5px;
