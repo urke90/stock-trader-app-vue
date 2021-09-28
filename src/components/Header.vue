@@ -34,7 +34,7 @@
                 </ul>
             </li>
             <li class="list__item">
-                <strong>Funds: {{ funds }}</strong>
+                <strong>Funds: {{ funds | currency }}</strong>
             </li>
         </ul>
     </nav>
