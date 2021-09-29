@@ -28,13 +28,6 @@ const actions = {
     }
 }
 
-
-/*
-END DAY btn
-    1. randomize stocks
-        - cena je cena * (1 + Math.Random() - 0.5)  ---- zaokruziti
-*/
-
 const getters = {
     getStocks(state) {
         return state.stocks;
