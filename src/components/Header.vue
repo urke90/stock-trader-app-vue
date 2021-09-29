@@ -20,7 +20,7 @@
         </ul>
         <ul class="nav__list nav__list--second">
             <li class="list__item">
-                <a href="#">End Day</a>
+                <a @click="endDayHandler">End Day</a>
             </li>
             <li class="list__item">
                 <a href="#">Save & Load</a>
@@ -45,6 +45,11 @@
         computed: {
             funds() {
                 return this.$store.getters.funds;
+            }
+        },
+        methods: {
+            endDayHandler() {
+                this.$store.dispatch('randomizeStocks');
             }
         }
     }
