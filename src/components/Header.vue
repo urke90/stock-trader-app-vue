@@ -29,10 +29,10 @@
                     :class="{'nav__list--visible': dropdownIsOpened}"
                 >
                     <li class="list__item">
-                        <button @click="saveDayHandler">Save Data</button>
+                        <button @click="saveDataHandler">Save Data</button>
                     </li>
                     <li class="list__item">
-                        <button>Load Data</button>
+                        <button @click="loadDataHandler">Load Data</button>
                     </li>
                 </ul>
             </li>
@@ -44,7 +44,10 @@
 </template>
 
 <script>
+// napraviti actions.js gde je action za GET iz firebase ) u nov fajl jer je vezano i za stocks i portfolio
+// 2 mutacije moram da imam SET_STOCKS i SET_PORTFOLIO_STOCKS
     import axios from 'axios';
+    import { mapActions } from 'vuex';
 
     export default {
         data() {
@@ -58,22 +61,28 @@
             }
         },
         methods: {
+            ...mapActions([
+                'randomizeStocks',
+                'loadData'
+            ]),
             endDayHandler() {
-                this.$store.dispatch('randomizeStocks');
+                this.randomizeStocks()
             },
-            saveDayHandler() {
-                console.log('opalilo');
+            saveDataHandler() {
                 const url = 'https://stock-trader-vue-94484-default-rtdb.firebaseio.com/data.json';
 
                 const data = {
                     funds: this.$store.getters.funds,
-                    stockPortfolio: this.$store.getters.portfolioStocks,
+                    portfolioStocks: this.$store.getters.portfolioStocks,
                     stocks: this.$store.getters.stocks
                 };
 
                 axios.put(url, data)
                     .then(res => console.log('res', res))
                     .catch(err => console.error(err))
+            },
+            loadDataHandler() {
+                this.loadData();
             }
         }
     }

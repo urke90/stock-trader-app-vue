@@ -7,7 +7,7 @@ const mutations = {
     // id, price, quantity comes from Stock.vue ( where we purchase stock)
     'BUY_STOCK'(state, { id, price, quantity }) {
         const existingStock = state.portfolioStocks
-            .find(portStock => portStock.id === order.id);
+            .find(portStock => portStock.id === id);
 
         if (existingStock) {
             existingStock.quantity += quantity;
@@ -34,6 +34,10 @@ const mutations = {
         }
 
         state.funds += quantity * price;
+    },
+    'SET_PORTFOLIO_STOCKS'(state, { portfolioStocks, funds }) {
+        state.portfolioStocks = portfolioStocks;
+        state.funds = funds;
     }
 };
 
