@@ -23,7 +23,6 @@ const actions = {
         commit('BUY_STOCK', order);
     },
     randomizeStocks({ commit }) {
-        console.log('randomize stocks action')
         commit('RND_STOCKS')
     }
 }

@@ -40,7 +40,6 @@
                     price: this.stock.price,
                     quantity: this.quantity
                 }
-                // console.log('stock', this.stock)
                 this.$store.dispatch('sellStock', order);
                 this.quantity = 0;
             }
