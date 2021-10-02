@@ -20,16 +20,19 @@
         </ul>
         <ul class="nav__list nav__list--second">
             <li class="list__item">
-                <a @click="endDayHandler">End Day</a>
+                <button @click="endDayHandler">End Day</button>
             </li>
-            <li class="list__item">
-                <a href="#">Save & Load</a>
-                <ul class="nav__list nav__list--data">
+            <li class="list__item list__item-dropdown">
+                <button @click="dropdownIsOpened = !dropdownIsOpened">Save & Load</button>
+                <ul
+                    class="nav__list nav__list--data"
+                    :class="{'nav__list--visible': dropdownIsOpened}"
+                >
                     <li class="list__item">
-                        <a href="#">Save Data</a>
+                        <button>Save Data</button>
                     </li>
                     <li class="list__item">
-                        <a href="#">Load Data</a>
+                        <button>Load Data</button>
                     </li>
                 </ul>
             </li>
@@ -42,6 +45,11 @@
 
 <script>
     export default {
+        data() {
+            return {
+                dropdownIsOpened: true
+            };
+        },
         computed: {
             funds() {
                 return this.$store.getters.funds;
@@ -64,13 +72,18 @@
         889696
         5F7470
     */
-
     .nav__wrapper {
         background-color: #E0E2DB;
         display: flex;
         justify-content: space-between;
         border-radius: 5px;
         margin-bottom: 20px;
+    }
+    .nav__wrapper button {
+        border: none;
+        outline: none;
+        background-color: inherit;
+        cursor: pointer;
     }
     .nav__list {
         display: flex;
@@ -82,8 +95,17 @@
         text-decoration: none;
         cursor: pointer;
     }
+    .list__item-dropdown {
+        position: relative;
+    }
     .nav__list--data {
+        position: absolute;
+        background-color: #E0E2DB;
         display: none;
+        top: 38px;
+    }
+    .nav__list--data.nav__list--visible {
+        display: block;
     }
     .router-link-active {
         background-color: #B8BDB5;
