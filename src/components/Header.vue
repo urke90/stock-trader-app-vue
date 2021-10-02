@@ -29,7 +29,7 @@
                     :class="{'nav__list--visible': dropdownIsOpened}"
                 >
                     <li class="list__item">
-                        <button>Save Data</button>
+                        <button @click="saveDayHandler">Save Data</button>
                     </li>
                     <li class="list__item">
                         <button>Load Data</button>
@@ -44,10 +44,12 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         data() {
             return {
-                dropdownIsOpened: true
+                dropdownIsOpened: false
             };
         },
         computed: {
@@ -58,6 +60,20 @@
         methods: {
             endDayHandler() {
                 this.$store.dispatch('randomizeStocks');
+            },
+            saveDayHandler() {
+                console.log('opalilo');
+                const url = 'https://stock-trader-vue-94484-default-rtdb.firebaseio.com/data.json';
+
+                const data = {
+                    funds: this.$store.getters.funds,
+                    stockPortfolio: this.$store.getters.portfolioStocks,
+                    stocks: this.$store.getters.stocks
+                };
+
+                axios.put(url, data)
+                    .then(res => console.log('res', res))
+                    .catch(err => console.error(err))
             }
         }
     }

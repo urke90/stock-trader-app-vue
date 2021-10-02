@@ -46,7 +46,7 @@ const actions = {
 const getters = {
     portfolioStocks(state, getters) {
         return state.portfolioStocks.map(stock => {
-            const existingStock = getters.getStocks.find(el => el.id === stock.id);
+            const existingStock = getters.stocks.find(el => el.id === stock.id);
             return {
                 id: stock.id,
                 quantity: stock.quantity,

@@ -29,7 +29,7 @@ const actions = {
 }
 
 const getters = {
-    getStocks(state) {
+    stocks(state) {
         return state.stocks;
     }
 }
