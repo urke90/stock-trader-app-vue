@@ -9,11 +9,11 @@
 </template>
 
 <script>
-    import Stock from './PortfolioStock.vue';
+    import AppStock from './PortfolioStock.vue';
 
     export default {
         components: {
-            appPortfolioStock: Stock
+            appPortfolioStock: AppStock
         },
         computed: {
             portfolioStocks() {
