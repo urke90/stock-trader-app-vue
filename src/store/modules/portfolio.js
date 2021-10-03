@@ -1,18 +1,18 @@
+import { SELL_STOCK, SET_PORTFOLIO_STOCKS, BUY_STOCK } from '../constants';
+
 const state = {
     portfolioStocks: [],
     funds: 10000
 };
 
 const mutations = {
-    // id, price, quantity comes from Stock.vue ( where we purchase stock)
-    'BUY_STOCK'(state, { id, price, quantity }) {
+    BUY_STOCK(state, { id, price, quantity }) {
         const existingStock = state.portfolioStocks
             .find(portStock => portStock.id === id);
 
         if (existingStock) {
             existingStock.quantity += quantity;
         } else {
-            // state.portfolioStocks.push(order);
             state.portfolioStocks.push({
                 id,
                 quantity
@@ -21,7 +21,7 @@ const mutations = {
 
         state.funds -= quantity * price;
     },
-    'SELL_STOCK'(state, { id, price, quantity }) {
+    SELL_STOCK(state, { id, price, quantity }) {
         const existingStock = state.portfolioStocks
             .find(portStock => portStock.id === id);
 
@@ -35,7 +35,7 @@ const mutations = {
 
         state.funds += quantity * price;
     },
-    'SET_PORTFOLIO_STOCKS'(state, { portfolioStocks, funds }) {
+    SET_PORTFOLIO_STOCKS(state, { portfolioStocks, funds }) {
         state.portfolioStocks = portfolioStocks;
         state.funds = funds;
     }
@@ -43,9 +43,9 @@ const mutations = {
 
 const actions = {
     sellStock({ commit }, stock) {
-        commit('SELL_STOCK', stock);
+        commit(SELL_STOCK, stock);
     }
-}
+};
 
 const getters = {
     portfolioStocks(state, getters) {
@@ -62,7 +62,7 @@ const getters = {
     funds(state) {
         return state.funds;
     }
-}
+};
 
 export default {
     state,

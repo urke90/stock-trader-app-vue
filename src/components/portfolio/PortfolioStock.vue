@@ -56,14 +56,6 @@
 </script>
 
 <style scoped>
- /*
-    ALL GRAY COLORS
-        E0E2DB
-        D2D4C8
-        B8BDB5
-        889696
-        5F7470
-    */
     .stock__wrapper {
         border: 1px solid #E0E2DB;
         border-radius: 5px;

@@ -44,8 +44,6 @@
 </template>
 
 <script>
-// napraviti actions.js gde je action za GET iz firebase ) u nov fajl jer je vezano i za stocks i portfolio
-// 2 mutacije moram da imam SET_STOCKS i SET_PORTFOLIO_STOCKS
     import axios from 'axios';
     import { mapActions } from 'vuex';
 
@@ -66,7 +64,7 @@
                 'loadData'
             ]),
             endDayHandler() {
-                this.randomizeStocks()
+                this.randomizeStocks();
             },
             saveDataHandler() {
                 const url = 'https://stock-trader-vue-94484-default-rtdb.firebaseio.com/data.json';
@@ -78,8 +76,8 @@
                 };
 
                 axios.put(url, data)
-                    .then(res => console.log('res', res))
-                    .catch(err => console.error(err))
+                    .then(res => res)
+                    .catch(err => console.error(err));
             },
             loadDataHandler() {
                 this.loadData();
@@ -89,14 +87,6 @@
 </script>
 
 <style scoped>
-    /*
-    ALL GRAY COLORS
-        E0E2DB
-        D2D4C8
-        B8BDB5
-        889696
-        5F7470
-    */
     .nav__wrapper {
         background-color: #E0E2DB;
         display: flex;

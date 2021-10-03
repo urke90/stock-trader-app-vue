@@ -9,10 +9,10 @@
 </template>
 
 <script>
-    import Stock from './Stock.vue';
+    import AppStock from './Stock.vue';
     export default {
         components: {
-            appStock: Stock
+            AppStock
         },
         computed: {
             stocks() {

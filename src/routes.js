@@ -1,9 +1,9 @@
-import Home from './components/Home.vue';
-import Portfolio from './components/portfolio/Portfolio.vue';
-import Stocks from './components/stocks/Stocks.vue';
+import AppHome from './components/Home.vue';
+import AppPortfolio from './components/portfolio/Portfolio.vue';
+import AppStocks from './components/stocks/Stocks.vue';
 
 export const routes = [
-    { path: '/', component: Home },
-    { path: '/portfolio', component: Portfolio },
-    { path: '/stocks', component: Stocks }
+    { path: '/', component: AppHome },
+    { path: '/portfolio', component: AppPortfolio },
+    { path: '/stocks', component: AppStocks }
 ];
