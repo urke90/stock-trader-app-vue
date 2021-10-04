@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-        <app-header></app-header>
+        <app-header
+            @toggleDropdown="toggleSaveLoadDropdown($event)"
+            :dropdown-is-open="dropDownIsOpen"
+        ></app-header>
         <transition name="slide" mode="out-in">
             <router-view></router-view>
         </transition>
@@ -10,8 +13,21 @@
 <script>
     import AppHeader from './components/Header.vue';
     export default {
+        data() {
+            return {
+                dropDownIsOpen: false,
+                shouldHideStocks: false,
+            };
+        },
         components: {
             AppHeader
+        },
+        methods: {
+            toggleSaveLoadDropdown() {
+                this.dropDownIsOpen = !this.dropDownIsOpen;
+                this.shouldHideStocks = !this.shouldHideStocks;
+
+            }
         },
         created() {
             this.$store.dispatch('initStocks');
@@ -49,7 +65,6 @@
             opacity: 1;
         }
     }
-
     @keyframes slide-out {
         from {
             transform: translateY(0px);
