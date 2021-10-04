@@ -23,10 +23,10 @@
                 <button @click="endDayHandler">End Day</button>
             </li>
             <li class="list__item list__item-dropdown">
-                <button @click="dropdownIsOpened = !dropdownIsOpened">Save & Load</button>
+                <button @click="$emit('toggleDropdown')">Save & Load</button>
                 <ul
                     class="nav__list nav__list--data"
-                    :class="{'nav__list--visible': dropdownIsOpened}"
+                    :class="{'nav__list--visible': dropdownIsOpen}"
                 >
                     <li class="list__item">
                         <button @click="saveDataHandler">Save Data</button>
@@ -48,6 +48,12 @@
     import { mapActions } from 'vuex';
 
     export default {
+        props: {
+            dropdownIsOpen: {
+                type: Boolean,
+                required: true
+            }
+        },
         data() {
             return {
                 dropdownIsOpened: false
@@ -78,9 +84,11 @@
                 axios.put(url, data)
                     .then(res => res)
                     .catch(err => console.error(err));
+                this.$emit('toggleDropdown');
             },
             loadDataHandler() {
                 this.loadData();
+                this.$emit('toggleDropdown');
             }
         }
     }
